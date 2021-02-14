@@ -12,8 +12,8 @@ const Table: FC<Props> = ({ data }) => {
     <div className={styles.root}>
       <div className={styles.row}>
         <span>Name</span>
-        <span>Stars</span>
-        <span>Forks</span>
+        <span>🌟 Stars</span>
+        <span>🍴 Forks</span>
       </div>
 
       {

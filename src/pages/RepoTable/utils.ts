@@ -1,9 +1,9 @@
-type GetOptionsArgs = { nextPage: string, previousPage: string, useLast: boolean }
+type GetOptionsArgs = { nextPage: string, previousPage: string, useLast: boolean, query: string }
 
-export const getOptions = ({ nextPage, previousPage, useLast }: GetOptionsArgs) => {
+export const getOptions = ({ nextPage, previousPage, useLast, query }: GetOptionsArgs) => {
   return {
     variables: {
-      query: 'react',
+      query,
       type: 'REPOSITORY',
       first: !useLast ? 10 : undefined,
       last: useLast ? 10 : undefined,

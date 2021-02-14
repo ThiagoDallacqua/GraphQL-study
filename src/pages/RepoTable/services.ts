@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import { useQuery } from '@apollo/react-hooks';
 
 import { GET_REPO } from '../../shared/utils/graphql/queries';
@@ -21,8 +21,10 @@ type RepoData = {
 export const useTable = () => {
   const [nextPage, setNextPage] = useState('')
   const [previousPage, setPreviousPage] = useState('')
+  const [search, setSearch] = useState('react')
+  const [query, setQuery] = useState('react')
   const [useLast, setUseLast] = useState(false)
-  const { data, loading, error } = useQuery<RepoData>(GET_REPO, getOptions({ nextPage, previousPage, useLast }));
+  const { data, loading, error } = useQuery<RepoData>(GET_REPO, getOptions({ nextPage, previousPage, useLast, query }));
 
   const getNextList = () => {
     if (data) {
@@ -48,11 +50,18 @@ export const useTable = () => {
     }
   }
 
+  const onChangeSearch = ({ target: { value } }: ChangeEvent<HTMLInputElement>) => setSearch(value)
+
+  const getNewSearch = () => setQuery(search)
+
   return {
+    search,
     data,
     loading,
     error,
     getNextList,
-    getPreviousList
+    getPreviousList,
+    onChangeSearch,
+    getNewSearch
   }
 }

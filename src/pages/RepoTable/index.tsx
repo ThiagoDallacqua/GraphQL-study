@@ -8,7 +8,8 @@ import { useTable } from './services';
 import styles from './styles.module.scss';
 
 const RepoTable: FC = () => {
-  const { data, loading, error, getNextList, getPreviousList } = useTable()
+  const { search, data, loading, error, getNextList, getPreviousList, onChangeSearch, getNewSearch } = useTable()
+
   const previousButtonStyle = cn(styles.button, { [styles.disabled]: !data?.search.pageInfo.hasPreviousPage })
   const nextButtonStyle = cn(styles.button, { [styles.disabled]: !data?.search.pageInfo.hasNextPage })
 
@@ -22,6 +23,12 @@ const RepoTable: FC = () => {
 
   return (
     <div className={styles.root}>
+      <div className={styles.inputContainer}>
+        <input className={styles.input} type="text" value={search} onChange={onChangeSearch} />
+
+        <button className={styles.button} onClick={getNewSearch}>new search</button>
+      </div>
+
       {getComponent()}
 
       <div className={styles.buttonsContainer}>
