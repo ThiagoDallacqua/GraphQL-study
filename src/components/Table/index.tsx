@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { RepoNode } from '../../shared/types/types';
+import { RepoNode } from '../../shared/types';
 
 import styles from './styles.module.scss';
 
