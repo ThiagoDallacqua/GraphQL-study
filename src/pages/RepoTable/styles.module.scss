@@ -1,0 +1,30 @@
+.root {
+  width: 85vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.button {
+  cursor: pointer;
+  padding: 8px 15px;
+  border-radius: 6px;
+  color: #fff;
+  background-color: cyan;
+  border: 0;
+  outline: none;
+}
+
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.buttonsContainer {
+  margin: 30px 0;
+  width: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
